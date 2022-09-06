@@ -1,8 +1,19 @@
 import React from "react";
 import { Accor } from "./Accor";
 import { ServiceItem } from "./ServiceItem";
+import { useState } from "react";
+import { Order } from "./Order";
+import { useOrders } from "../hooks/useOrders";
+import catalog from "./Catalog";
 
 export const Service = () => {
+  const order = useOrders();
+  const [listItem, setListItem] = useState();
+  const [isOpenCleaner, setIsOpenCleaner] = useState(false);
+  const [isOpenWaterСleaning, setIsOpenWaterСleaning] = useState(false);
+  // const [bascket, setBascket] = useState(false);
+  const [isCount, setIsCount] = useState(false);
+
   return (
     <div className="service">
       <div className="service-head">
@@ -16,17 +27,38 @@ export const Service = () => {
           <button className="service-head__button"></button>
         </form>
       </div>
-      <p className="service__text">
-        Из-за ежедневного использования повседневная одежда быстро изнашивается
-        и нуждается в профессиональном уходе. То, что чаще носится, должно и
-        чаще чиститься! Подбирать для повседневной одежды правильные программы
-        обработки – это задача профессионалов.
-      </p>
-      <div className="service-block">
-        {/* <AllCollapseExample /> */}
-        <Accor />
-        <ServiceItem />
+      <div className="service-text">
+        <p className="service__text">
+          Из-за ежедневного использования повседневная одежда быстро
+          изнашивается и нуждается в <br /> профессиональном уходе. То, что чаще
+          носится, должно и чаще чиститься! Подбирать для повседневной <br />
+          одежды правильные программы обработки – это задача профессионалов.
+        </p>
       </div>
+      <div className="service-block">
+        <Accor
+          setIsOpenWaterСleaning={setIsOpenWaterСleaning}
+          setIsOpenCleaner={setIsOpenCleaner}
+        />
+        {isOpenCleaner && (
+          <ServiceItem
+            openItem={catalog.outerwear}
+            listItem={listItem}
+            setListItem={setListItem}
+            isCount={isCount}
+            setIsCount={setIsCount}
+            isOpenCleaner={isOpenCleaner}
+            {...order}
+          />
+        )}
+        {/* {isOpenWaterСleaning && (
+          <ServiceItem
+            openItem={catalog.businessSuit}
+            {...order}
+          />
+        )} */}
+      </div>
+      {/* <Order {...order} /> */}
     </div>
   );
 };
