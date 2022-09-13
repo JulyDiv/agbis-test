@@ -4,6 +4,7 @@ export const Accor = ({
   setIsOpenCleaner,
   setIsOpenWaterСleaning
 }) => {
+
   return (
     <div className="acor-container">
       <input type="checkbox" name="chacor" id="chacor1" />

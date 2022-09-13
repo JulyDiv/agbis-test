@@ -2,17 +2,13 @@ import React from "react";
 import { Accor } from "./Accor";
 import { ServiceItem } from "./ServiceItem";
 import { useState } from "react";
-import { Order } from "./Order";
 import { useOrders } from "../hooks/useOrders";
 import catalog from "./Catalog";
 
 export const Service = () => {
   const order = useOrders();
-  const [listItem, setListItem] = useState();
   const [isOpenCleaner, setIsOpenCleaner] = useState(false);
   const [isOpenWaterСleaning, setIsOpenWaterСleaning] = useState(false);
-  // const [bascket, setBascket] = useState(false);
-  const [isCount, setIsCount] = useState(false);
 
   return (
     <div className="service">
@@ -43,22 +39,11 @@ export const Service = () => {
         {isOpenCleaner && (
           <ServiceItem
             openItem={catalog.outerwear}
-            listItem={listItem}
-            setListItem={setListItem}
-            isCount={isCount}
-            setIsCount={setIsCount}
             isOpenCleaner={isOpenCleaner}
             {...order}
           />
         )}
-        {/* {isOpenWaterСleaning && (
-          <ServiceItem
-            openItem={catalog.businessSuit}
-            {...order}
-          />
-        )} */}
       </div>
-      {/* <Order {...order} /> */}
     </div>
   );
 };

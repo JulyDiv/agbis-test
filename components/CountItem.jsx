@@ -1,16 +1,15 @@
 import React from "react";
 
-export const CountItem = ({ count, setCount, onChange }) => {
-
+export const CountItem = ({ count, setCount, onChange, setIsCount }) => {
   return (
     <div className="counter">
       <button
-        className="counter__button"
-        disabled={count <= 1}
-        onClick={() => setCount(count - 1)}
-      >
-        -
-      </button>
+        className="counter__button counter__button-minus"
+        // disabled={count <= 1}
+        onClick={() => {
+          count < 1 ? setIsCount(false) : setCount(count - 1);
+        }}
+      ></button>
       <input
         className="counter__input"
         type="number"
@@ -19,9 +18,9 @@ export const CountItem = ({ count, setCount, onChange }) => {
         onChange={onChange}
       />
       <button
-        className="counter__button"
+        className="counter__button counter__button-plus"
         onClick={() => setCount(count + 1)}
-      >+</button>
+      ></button>
     </div>
   );
 };
