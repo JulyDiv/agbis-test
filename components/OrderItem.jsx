@@ -1,7 +1,22 @@
 import React from "react";
 import { CountItem } from "./CountItem";
+import { useCount } from "../hooks/useCount";
+import { useState } from "react";
+import { CountItemBag } from "./CountItemBag";
 
-export const OrderItem = ({ title, id, price, deleteOrder, name, count, setIsCount, isCount }) => {
+export const OrderItem = ({
+  title,
+  id,
+  price,
+  deleteOrder,
+  name,
+  count,
+  setIsCount
+}) => {
+    const [countBag, setCountBag] = useState(count);
+    const onChange = (e) => {
+      setCountBag(e.target.value);
+    };
   return (
     <>
       <span className="bascket-bag__name">{name}</span>
@@ -14,23 +29,14 @@ export const OrderItem = ({ title, id, price, deleteOrder, name, count, setIsCou
             className="bascket-bag__button"
           ></button>
           <div className="bascket-bag__price">{price} ₽</div>
-          <div className="bascket-bag__count">
-            {/* {isCount ? ( */}
-              {/* <>
-                <button onClick={() => setCount(count - 1)}>-</button>
-                <input
-                  className="counter__input"
-                  type="number"
-                  onChange={onChange}
-                  value={count}
-                />
-                <button onClick={() => setCount(count + 1)}>+</button>
-              </>
-            ) : ( */}
-              <span>{count}</span>
-            {/* )} */}
+          <div className="">
+            <CountItemBag
+              onChange={onChange}
+              countBag={countBag}
+              setCountBag={setCountBag}
+              setIsCount={setIsCount}
+            />
           </div>
-          {/* <CountItem {...counter} setIsCount={setIsCount}></CountItem> */}
         </div>
       </div>
       <div className="bascket-bag__line-bottom"></div>

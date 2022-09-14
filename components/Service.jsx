@@ -20,7 +20,7 @@ export const Service = () => {
             placeholder="Поиск"
             className="service-head__input"
           />
-          <button className="service-head__button"></button>
+          <button type="submit" className="service-head__button"></button>
         </form>
       </div>
       <div className="service-text">

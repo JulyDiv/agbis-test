@@ -32,6 +32,7 @@ export const Order = ({ orders, setOrders, setIsCount, isCount }) => {
       <div className="bascket-wrapper">
         <h2 className="bascket__title">Корзина</h2>
         <input
+          className="bascket__input"
           onClick={() => openBascket()}
           type="checkbox"
           name="input"
@@ -65,8 +66,6 @@ export const Order = ({ orders, setOrders, setIsCount, isCount }) => {
                   setIsCount={setIsCount}
                   isCount={isCount}
                 />
-                {/* <CountItem {...counter} /> */}
-                {/* <IsCount count={orders ? orders.get(id).count : 0} /> */}
               </div>
             ))}
             <button className="bascket__button">Оформить заказ</button>
