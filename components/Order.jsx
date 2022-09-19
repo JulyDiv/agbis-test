@@ -1,8 +1,5 @@
 import React from "react";
-import { CountItem } from "./CountItem";
-import { IsCount } from "./isCount";
 import { OrderItem } from "./OrderItem";
-import { useCount } from "../hooks/useCount";
 import { useState } from "react";
 
 export const Order = ({ orders, setOrders, setIsCount, isCount }) => {
@@ -11,22 +8,26 @@ export const Order = ({ orders, setOrders, setIsCount, isCount }) => {
     let newOrder = [...orders.values()].filter((item) => item.id != id);
     setOrders(newOrder);
   };
-  const counter = useCount();
+
   const openBascket = () => {
     setBascketBody(true);
     if (bascketBody) {
       setBascketBody(false);
     }
   };
+
   const totalPrice = (order) => order.price * order.count;
+
   const total = [...orders.values()].reduce(
     (result, order) => totalPrice(order) + result,
     0
   );
+
   const totalCounter = [...orders.values()].reduce(
     (result, order) => order.count + result,
     0
   );
+
   return (
     <div className="bascket">
       <div className="bascket-wrapper">

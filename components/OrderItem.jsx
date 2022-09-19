@@ -1,8 +1,4 @@
 import React from "react";
-import { CountItem } from "./CountItem";
-import { useCount } from "../hooks/useCount";
-import { useState } from "react";
-import { CountItemBag } from "./CountItemBag";
 
 export const OrderItem = ({
   title,
@@ -10,13 +6,8 @@ export const OrderItem = ({
   price,
   deleteOrder,
   name,
-  count,
-  setIsCount
+  count
 }) => {
-    const [countBag, setCountBag] = useState(count);
-    const onChange = (e) => {
-      setCountBag(e.target.value);
-    };
   return (
     <>
       <span className="bascket-bag__name">{name}</span>
@@ -29,14 +20,7 @@ export const OrderItem = ({
             className="bascket-bag__button"
           ></button>
           <div className="bascket-bag__price">{price} ₽</div>
-          <div className="">
-            <CountItemBag
-              onChange={onChange}
-              countBag={countBag}
-              setCountBag={setCountBag}
-              setIsCount={setIsCount}
-            />
-          </div>
+          <span className="bascket-bag__count">{count}</span>
         </div>
       </div>
       <div className="bascket-bag__line-bottom"></div>
