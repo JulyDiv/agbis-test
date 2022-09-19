@@ -17,6 +17,7 @@ a {
 
 input {
   outline: none;
+  /* outline-offset: 0; */
 }
 
 input::-webkit-outer-spin-button,
@@ -442,7 +443,7 @@ button {
   display: none;
 }
 
-.bascket__label {
+.bascket label {
   position: relative;
   width: 34px;
   height: 34px;
@@ -643,6 +644,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 20px auto;
   width: 67px;
   border: 1px solid #0084ca;
   border-radius: 4px;

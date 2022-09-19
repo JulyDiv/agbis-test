@@ -38,7 +38,7 @@ export const Order = ({ orders, setOrders, setIsCount, isCount }) => {
           name="input"
           id="input1"
         />
-        <label htmlFor="input1"></label>
+        <label className="bascket__label" htmlFor="input1"></label>
 
         <div>
           <div className="bascket-order">
